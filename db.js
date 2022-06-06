@@ -7,6 +7,15 @@ function getAllWombles(db = connection) {
   return db(`wombles`).select()
 }
 
+function getCharByWomble(id, db = connection) {
+  return db('wombles')
+    .join('characteristics', 'wombles.characteristic_id', 'characteristics.id')
+    .select(`wombles.id`, `wombles.name`, `characteristics.description`)
+    .where('wombles.id', id)
+    .first()
+}
+
 module.exports = {
   getAllWombles,
+  getCharByWomble,
 }
