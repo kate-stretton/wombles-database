@@ -25,9 +25,14 @@ function addWomble(name, db = connection) {
   return db('wombles').insert({ name: name })
 }
 
+function retireWomble(id, db = connection) {
+  return db('wombles').delete().where('id', id)
+}
+
 module.exports = {
   getAllWombles,
   getCharByWomble,
   assignRubbish,
   addWomble,
+  retireWomble,
 }

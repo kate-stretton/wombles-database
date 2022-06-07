@@ -7,6 +7,22 @@ module.exports = router
 //   res.send('WOMBLES!')
 // })
 
+router.post('/wombleremoved', (req, res) => {
+  const retiredWomble = req.body
+  console.log(retiredWomble)
+  db.retireWomble(retiredWomble.id)
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+})
+
+router.get('/retirewomble', (req, res) => {
+  res.render('retireWomble')
+})
+
 router.post('/wombleadded', (req, res) => {
   const babyWomble = req.body
   console.log(babyWomble)
