@@ -18,10 +18,22 @@ router.get(`/view`, (req, res) => {
     })
 })
 
+router.get('/assignment', (req, res) => {
+  db.assignRubbish()
+    .then((wombles) => {
+      console.log(wombles)
+      res.render('assignment', { wombles })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
+
 router.get('/:id', (req, res) => {
   db.getCharByWomble(req.params.id)
     .then((womble) => {
-      console.log(womble)
+      // console.log(womble)
       res.render('characteristics', { womble })
     })
     .catch((err) => {

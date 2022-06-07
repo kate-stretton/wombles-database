@@ -15,7 +15,14 @@ function getCharByWomble(id, db = connection) {
     .first()
 }
 
+function assignRubbish(db = connection) {
+  return db('wombles')
+    .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
+    .select('wombles.id', 'wombles.name', 'rubbish.name as rubbishDescription')
+}
+
 module.exports = {
   getAllWombles,
   getCharByWomble,
+  assignRubbish,
 }
