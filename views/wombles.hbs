@@ -1,6 +1,11 @@
-<ul>
-  {{#each wombles}}
-  <li>{{id}}</li>
-  <li><a href={{id}}>{{name}}</a></li>
-  {{/each}}
-</ul>
+<style>
+p{
+  text-align: center
+}
+</style>
+
+{{#each wombles}}
+  <p><a href={{id}}>{{name}}</a></p>
+{{/each}}
+
+<p><a href='assignment'>Rubbish Assignment</a></p>

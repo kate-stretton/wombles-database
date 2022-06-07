@@ -10,14 +10,14 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-test('list wombles', () => {
-  const expected = 'WOMBLES!'
-  return request(server)
-    .get('/')
-    .then((res) => {
-      return expect(res.text).toBe(expected)
-    })
-})
+// test('list wombles', () => {
+//   const expected = [db.getAllWombles()]
+//   return request(server)
+//     .get('/')
+//     .then((res) => {
+//       return expect(res.text).toBe(expected)
+//     })
+// })
 
 describe('Get http://localhost:3000/view', () => {
   test('render wombles template with womble id and name from db', () => {
@@ -48,9 +48,20 @@ describe(`Get /:id`, () => {
     return request(server)
       .get(`/100`)
       .then((res) => {
-        console.log(res.text)
         expect(res.text).toContain(`Kevin`)
         expect(db.getCharByWomble).toHaveBeenCalledWith(`100`)
+      })
+  })
+  test('returns status 500 and error if db query fails', () => {
+    db.getCharByWomble.mockImplementation(() => {
+      return Promise.reject(new Error('much sadness'))
+    })
+    expect.assertions(2)
+    return request(server)
+      .get('/100')
+      .then((res) => {
+        expect(res.status).toBe(500)
+        expect(res.text).toContain('Server error')
       })
   })
 })

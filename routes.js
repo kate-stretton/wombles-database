@@ -3,11 +3,11 @@ const db = require('./db')
 const router = express.Router()
 module.exports = router
 
-router.get('/', (req, res) => {
-  res.send('WOMBLES!')
-})
+// router.get('/', (req, res) => {
+//   res.send('WOMBLES!')
+// })
 
-router.get(`/view`, (req, res) => {
+router.get(`/`, (req, res) => {
   db.getAllWombles()
     .then((wombles) => {
       res.render(`wombles`, { wombles })
