@@ -1,6 +1,8 @@
 const request = require('supertest')
 const server = require('./server')
 const db = require('./db')
+// const { test } = require('./knexfile')
+// const { lazyrouter } = require('express/lib/application')
 
 jest.mock('./db')
 
@@ -29,8 +31,26 @@ describe('Get http://localhost:3000/view', () => {
     return request(server)
       .get('/view')
       .then((res) => {
-        console.log(res.text)
         expect(res.text).toContain(`10`)
+      })
+  })
+})
+
+describe(`Get /:id`, () => {
+  test(`render characteristic template from ID on a URL`, () => {
+    const fakeWomble = {
+      id: 100,
+      name: `Kevin`,
+      characteristic: `lazy`,
+    }
+    db.getCharByWomble.mockReturnValue(Promise.resolve(fakeWomble))
+    expect.assertions(2)
+    return request(server)
+      .get(`/100`)
+      .then((res) => {
+        console.log(res.text)
+        expect(res.text).toContain(`Kevin`)
+        expect(db.getCharByWomble).toHaveBeenCalledWith(`100`)
       })
   })
 })
