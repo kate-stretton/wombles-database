@@ -8,7 +8,7 @@
     "dev": "nodemon index",
     "knex": "knex",
     "lint": "eslint .",
-    "test": "jest --watch --noStackTrace"
+    "test": "jest --watchAll --noStackTrace"
   },
   "repository": {
     "type": "git",
