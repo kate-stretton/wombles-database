@@ -21,8 +21,13 @@ function assignRubbish(db = connection) {
     .select('wombles.id', 'wombles.name', 'rubbish.name as rubbishDescription')
 }
 
+function addWomble(womble, db = connection) {
+  return db('wombles').add(womble)
+}
+
 module.exports = {
   getAllWombles,
   getCharByWomble,
   assignRubbish,
+  addWomble,
 }

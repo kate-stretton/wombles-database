@@ -7,6 +7,10 @@ module.exports = router
 //   res.send('WOMBLES!')
 // })
 
+router.get('/addwomble', (req, res) => {
+  res.render('addwomble')
+})
+
 router.get(`/`, (req, res) => {
   db.getAllWombles()
     .then((wombles) => {
