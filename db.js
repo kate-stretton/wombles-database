@@ -29,6 +29,10 @@ function retireWomble(id, db = connection) {
   return db('wombles').delete().where('id', id)
 }
 
+// function editWomble(characteristic, db=connection){
+//   return db('wombles').update()
+// }
+
 module.exports = {
   getAllWombles,
   getCharByWomble,
