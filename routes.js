@@ -29,3 +29,9 @@ router.get('/:id', (req, res) => {
       res.status(500).send('Server error')
     })
 })
+
+// create assignments route
+// edit seeds file
+// add new colum to wombles for rubbish_id
+// join wombles and rubbish
+// // create hbs file for rubbish
