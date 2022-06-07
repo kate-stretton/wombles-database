@@ -7,19 +7,21 @@ module.exports = router
 //   res.send('WOMBLES!')
 // })
 
-router.get('/addwomble', (req, res) => {
-  res.render('addwomble')
-})
-
-router.get(`/`, (req, res) => {
-  db.getAllWombles()
-    .then((wombles) => {
-      res.render(`wombles`, { wombles })
+router.post('/wombleadded', (req, res) => {
+  const babyWomble = req.body
+  console.log(babyWomble)
+  db.addWomble(babyWomble.name)
+    .then(() => {
+      //res.render('newwomble', { wombles })
+      res.redirect('/')
     })
     .catch((err) => {
       console.error(err)
-      res.status(500).send('Server error')
     })
+})
+
+router.get('/addwomble', (req, res) => {
+  res.render('addWomble')
 })
 
 router.get('/assignment', (req, res) => {
@@ -39,6 +41,17 @@ router.get('/:id', (req, res) => {
     .then((womble) => {
       // console.log(womble)
       res.render('characteristics', { womble })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
+
+router.get(`/`, (req, res) => {
+  db.getAllWombles()
+    .then((wombles) => {
+      res.render(`wombles`, { wombles })
     })
     .catch((err) => {
       console.error(err)
