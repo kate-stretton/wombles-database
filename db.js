@@ -10,7 +10,12 @@ function getAllWombles(db = connection) {
 function getCharByWomble(id, db = connection) {
   return db('wombles')
     .join('characteristics', 'wombles.characteristic_id', 'characteristics.id')
-    .select(`wombles.id`, `wombles.name`, `characteristics.description`)
+    .select(
+      `wombles.image as image`,
+      `wombles.id`,
+      `wombles.name`,
+      `characteristics.description`
+    )
     .where('wombles.id', id)
     .first()
 }

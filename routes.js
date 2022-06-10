@@ -82,7 +82,7 @@ router.get('/assignment', (req, res) => {
 router.get('/:id', (req, res) => {
   db.getCharByWomble(req.params.id)
     .then((womble) => {
-      // console.log(womble)
+      console.log(womble)
       res.render('characteristics', { womble })
     })
     .catch((err) => {
