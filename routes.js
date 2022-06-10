@@ -22,7 +22,6 @@ router.post('/edit', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
-  console.log(id)
   db.getCharByWomble(id)
     .then((womble) => {
       // console.log(womble)
@@ -82,7 +81,6 @@ router.get('/assignment', (req, res) => {
 router.get('/:id', (req, res) => {
   db.getCharByWomble(req.params.id)
     .then((womble) => {
-      console.log(womble)
       res.render('characteristics', { womble })
     })
     .catch((err) => {
