@@ -7,6 +7,33 @@ module.exports = router
 //   res.send('WOMBLES!')
 // })
 
+router.post('/edit', (req, res) => {
+  const newCharacteristic = req.body
+  const id = 88801
+  console.log(newCharacteristic)
+  db.updateWomble(id, newCharacteristic)
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+})
+
+router.get('/:id/edit', (req, res) => {
+  const id = Number(req.params.id)
+  console.log(id)
+  db.getCharByWomble(id)
+    .then((womble) => {
+      // console.log(womble)
+      res.render('editWomble', { womble })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
+
 router.post('/wombleremoved', (req, res) => {
   const retiredWomble = req.body
   console.log(retiredWomble)

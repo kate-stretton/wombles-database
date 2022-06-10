@@ -29,9 +29,11 @@ function retireWomble(id, db = connection) {
   return db('wombles').delete().where('id', id)
 }
 
-// function editWomble(characteristic, db=connection){
-//   return db('wombles').update()
-// }
+function updateWomble(id, description, db = connection) {
+  return db('characteristics')
+    .where('id', id)
+    .update({ description: description })
+}
 
 module.exports = {
   getAllWombles,
@@ -39,4 +41,5 @@ module.exports = {
   assignRubbish,
   addWomble,
   retireWomble,
+  updateWomble,
 }
