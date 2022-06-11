@@ -1,6 +1,6 @@
 exports.seed = (knex) =>
   knex('wombles')
-    .del()
+    .truncate()
     .then(() =>
       knex('wombles').insert([
         {

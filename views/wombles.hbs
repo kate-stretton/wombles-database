@@ -1,9 +1,8 @@
 {{!-- <img class = "center" src="/images/wombles.jpg"> --}}
 <div class = "container">
   {{#each wombles}}
-  <div class="wombles-list">
-    <a href={{id}}><img class="img-circle" src="{{image}}"></a>
-    <p class="center">{{name}}</p>
+  <div class="card">
+    <a href={{id}}><img class="img-circle" src="{{image}}"><p class="center">{{name}}</p></a>
     
   </div>
 {{/each}}

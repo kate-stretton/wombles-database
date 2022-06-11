@@ -26,8 +26,8 @@ function assignRubbish(db = connection) {
     .select('wombles.id', 'wombles.name', 'rubbish.name as rubbishDescription')
 }
 
-function addWomble(name, db = connection) {
-  return db('wombles').insert({ name: name })
+function addWomble(name, characteristic_id, db = connection) {
+  return db('wombles').insert({ name, characteristic_id })
 }
 
 function retireWomble(id, db = connection) {

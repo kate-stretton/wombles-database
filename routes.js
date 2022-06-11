@@ -8,9 +8,10 @@ module.exports = router
 // })
 
 router.post('/addwomble', (req, res) => {
-  const babyWomble = req.body
-  console.log(babyWomble)
-  db.addWomble(babyWomble.name)
+  const name = req.body.name
+  const characteristic = req.body.characteristic_id
+  console.log(name, characteristic)
+  db.addWomble(name, characteristic)
     .then(() => {
       //res.render('newwomble', { wombles })
       res.redirect('/')
