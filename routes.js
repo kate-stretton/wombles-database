@@ -50,7 +50,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-router.post('/wombleremoved', (req, res) => {
+router.post('/retirewomble', (req, res) => {
   const retiredWomble = req.body
   console.log(retiredWomble)
   db.retireWomble(retiredWomble.id)
