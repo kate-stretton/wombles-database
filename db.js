@@ -34,10 +34,8 @@ function retireWomble(id, db = connection) {
   return db('wombles').delete().where('id', id)
 }
 
-function updateWomble(id, description, db = connection) {
-  return db('characteristics')
-    .where('id', id)
-    .update({ description: description })
+function updateWomble(id, characteristic_id, db = connection) {
+  return db('wombles').update({ characteristic_id }).where('id', id)
 }
 
 module.exports = {

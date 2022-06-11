@@ -1,5 +1,25 @@
 <h2>Update {{womble.name}}</h2>
-<form action="/edit" method="post">
-<input type="text" name="characteristic" placeholder="New characteristic" value="{{womble.description}}">
+<form action="/updatewomble" method="post" class ="form">
+<label for="name">Name:</label>
+    <select class="form-input" name="name" >
+      <option value="88801" >Great Uncle Bulgaria</option>
+      <option value="88802" >Tobermory</option>
+      <option value="88803" >Madame Cholet</option>
+      <option value="88804" >Orinoco</option>
+      <option value="88805" >Wellington</option>
+      <option value="88806" >Tomsk</option>
+      <option value="88807" >Bungo</option>
+    </select>
+<label for="name">Characteristic:</label>
+    <select class="form-input" name="characteristic_id" >
+      <option value="99901" >Wise</option>
+      <option value="99902" >Handy</option>
+      <option value="99903" >French</option>
+      <option value="99904" >Lazy</option>
+      <option value="99905" >Clever</option>
+      <option value="99906" >Sporty</option>
+      <option value="99907" >Bossy</option>
+    </select>
+
 <input type="submit" name="" value="Submit">
 </form>

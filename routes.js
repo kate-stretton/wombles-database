@@ -24,29 +24,20 @@ router.get('/addwomble', (req, res) => {
   res.render('addWomble')
 })
 
-router.post('/edit', (req, res) => {
-  const newCharacteristic = req.body
-  const id = 88801
-  console.log(newCharacteristic)
-  db.updateWomble(id, newCharacteristic)
-    .then(() => {
-      res.redirect('/')
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+router.get('/updatewomble', (req, res) => {
+  res.render('editWomble')
 })
 
-router.get('/:id/edit', (req, res) => {
-  const id = Number(req.params.id)
-  db.getCharByWomble(id)
-    .then((womble) => {
-      // console.log(womble)
-      res.render('editWomble', { womble })
+router.post('/updatewomble', (req, res) => {
+  const wombleId = req.body.name
+  const characteristicId = req.body.characteristic_id
+  console.log(wombleId, characteristicId)
+  db.updateWomble(wombleId, characteristicId)
+    .then(() => {
+      res.redirect('/' + wombleId)
     })
     .catch((err) => {
       console.error(err)
-      res.status(500).send('Server error')
     })
 })
 
