@@ -1,5 +1,16 @@
 <h2>Register a baby womble</h2>
-<form action="/wombleadded" method="post">
+<form action="/addwomble" class = "form" method="post">
+<label for="name">Name:</label>
 <input type="text" name="name" placeholder="Womble name" value="{{name}}">
+    <label for="characteristic_id">Characteristic:</label>
+    <select class="form-input" name="characteristic_id" >
+      <option value="99901" >Wise</option>
+      <option value="99902" >Handy</option>
+      <option value="99903" >French</option>
+      <option value="99904" >Lazy</option>
+      <option value="99905" >Clever</option>
+      <option value="99906" >Sporty</option>
+      <option value="99907" >Bossy</option>
+    </select>
 <input type="submit" name="" value="Submit">
 </form>

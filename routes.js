@@ -7,6 +7,23 @@ module.exports = router
 //   res.send('WOMBLES!')
 // })
 
+router.post('/addwomble', (req, res) => {
+  const babyWomble = req.body
+  console.log(babyWomble)
+  db.addWomble(babyWomble.name)
+    .then(() => {
+      //res.render('newwomble', { wombles })
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+})
+
+router.get('/addwomble', (req, res) => {
+  res.render('addWomble')
+})
+
 router.post('/edit', (req, res) => {
   const newCharacteristic = req.body
   const id = 88801
@@ -47,23 +64,6 @@ router.post('/wombleremoved', (req, res) => {
 
 router.get('/retirewomble', (req, res) => {
   res.render('retireWomble')
-})
-
-router.post('/wombleadded', (req, res) => {
-  const babyWomble = req.body
-  console.log(babyWomble)
-  db.addWomble(babyWomble.name)
-    .then(() => {
-      //res.render('newwomble', { wombles })
-      res.redirect('/')
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-})
-
-router.get('/addwomble', (req, res) => {
-  res.render('addWomble')
 })
 
 router.get('/assignment', (req, res) => {

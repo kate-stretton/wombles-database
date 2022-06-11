@@ -62,3 +62,12 @@ td, th {
   padding: 8px;
 }
 
+.form {
+  display: grid;
+  grid-template-columns: 200px  300px;
+  grid-auto-flow: row;
+  grid-gap: 0.8em;
+  padding: 1.1em;
+  width: max-content;
+}
+
