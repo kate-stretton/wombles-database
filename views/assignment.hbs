@@ -1,9 +1,14 @@
-<h2>Rubbish assignments</h2>
-
-{{#each wombles}}
- <p>{{name}}</p>
- <ul>
-  <li>Rubbish responsibility: {{rubbishDescription}}</li><br/>
-</ul>
-{{/each}}
+<h2>Rubbish assignment</h2>
+<table>
+  <tr>
+    <th>Womble</th>
+    <th>Rubbish assignment</th>
+  </tr>
+  {{#each wombles}}
+  <tr>
+    <td>{{name}}</td>
+    <td>{{rubbishDescription}}</td>
+  </tr>
+  {{/each}}
+</table>
 
